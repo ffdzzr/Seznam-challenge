@@ -1,23 +1,22 @@
 ## Repository structure
-
-.
-├── go-server
-│   ├── Dockerfile
-│   ├── go.mod
-│   ├── go-server.yaml
-│   ├── go-simple-server
-│   ├── go.sum
-│   └── main.go
-├── grafana
-│   ├── grafana-graphs.pdf
-│   ├── grafana-secret.yaml
-│   └── grafana.yaml
-├── ingress
-│   ├── monitoring-ingress.yaml
-│   └── webserver-ingress.yaml
-├── prometheus
-│   └── prometheus.yaml
-└── README.md
+.  
+├── go-server  
+│   ├── Dockerfile  
+│   ├── go.mod  
+│   ├── go-server.yaml  
+│   ├── go-simple-server  
+│   ├── go.sum  
+│   └── main.go  
+├── grafana  
+│   ├── grafana-graphs.pdf  
+│   ├── grafana-secret.yaml  
+│   └── grafana.yaml  
+├── ingress  
+│   ├── monitoring-ingress.yaml  
+│   └── webserver-ingress.yaml  
+├── prometheus  
+│   └── prometheus.yaml  
+└── README.md  
 
 ## Assignment
 
@@ -44,7 +43,7 @@ pushed it to docker hub https://hub.docker.com/repository/docker/ffdzzr/go-simpl
 with "docker login" and then "docker push <image:tag>"
 
 ### 2.3
-wrote all the .yaml manifests for go-server, Prometheus and Grafana
+wrote all the .yaml manifests for go-server, Prometheus and Grafana.
 
 ### 3
 applied the manifests with
@@ -64,37 +63,37 @@ while true; do curl webserver.com; printf "\\t"; sleep 2; done
 ```
 
 ## Thoughts
-- Most of the components are in one file. it was easier to apply all the changes, but for production it might be better to separate them
-- I shared grafana-secret.yaml which should be a sin, but this is only for testing purposes
+- Most of the components are in one file. it was easier to apply all the changes, but for production it might be better to separate them.
+- I shared grafana-secret.yaml which should be a sin, but this is only for testing purposes.
 - For Ingress controller I used "minikube addons enable ingress", but I saw one pretty nicely written on github.
 https://github.com/kubernetes/ingress-nginx/blob/main/deploy/prometheus/deployment.yaml
 but from what I understood, there is a limit on what you can do with minikube. However, I still tried it but had to run "sudo minikube tunnel" to get it working, so I went back to the addon.
 - Using only version specific images like grafana/grafana:12.0.2 and not latest. However maybe it's overkill for Grafana when it's not required to run all the time, unlike Go-server and Prometheus. By using latest tag you wouldn't have to watch it's versions for new vulnerabilities all the time.
 
 ## Links that I saved
-### Docker + Kubernetes
-yaml validator - https://www.yamllint.com/
-k8s Service - https://kubernetes.io/docs/concepts/services-networking/service/
-k8s Deployment - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-k8s Namespaces - https://kubernetes.io/docs/tasks/administer-cluster/namespaces/#creating-a-new-namespace
-k8s Secret - https://kubernetes.io/docs/concepts/configuration/secret/
-k8s ConfigMap - https://kubernetes.io/docs/concepts/configuration/configmap/
-k8s Volumes - https://kubernetes.io/docs/concepts/storage/volumes/
-k8s RolingUpdate - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
-k8s liveness and readiness probe - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-k8s Persistant volume and claim - https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
-Ingress controller manifest - https://github.com/kubernetes/ingress-nginx/blob/main/deploy/prometheus/deployment.yaml
-test ingress in minikube - https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+### Kubernetes
+yaml validator - https://www.yamllint.com/  
+k8s Service - https://kubernetes.io/docs/concepts/services-networking/service/  
+k8s Deployment - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/  
+k8s Namespaces - https://kubernetes.io/docs/tasks/administer-cluster/namespaces/#creating-a-new-namespace  
+k8s Secret - https://kubernetes.io/docs/concepts/configuration/secret/  
+k8s ConfigMap - https://kubernetes.io/docs/concepts/configuration/configmap/  
+k8s Volumes - https://kubernetes.io/docs/concepts/storage/volumes/  
+k8s RolingUpdate - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy  
+k8s liveness and readiness probe - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup/probes/  
+k8s Persistant volume and claim - https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/  
+Ingress controller manifest - https://github.com/kubernetes/ingress-nginx/blob/main/deploy/prometheus/deployment.yaml  
+test ingress in minikube - https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/  
 
 ### Prometheus
-Grafana + Prometheus - https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/
-Prometheus promql operators - https://prometheus.io/docs/prometheus/latest/querying/operators/
-Prometheus manifest example - https://github.com/techiescamp/kubernetes-prometheus
-Inspiration - https://github.com/techiescamp/kubernetes-prometheus/tree/master
-cheatsheet - https://promlabs.com/promql-cheat-sheet/
+Grafana + Prometheus - https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/  
+Promql operators - https://prometheus.io/docs/prometheus/latest/querying/operators/  
+Manifest example - https://github.com/techiescamp/kubernetes-prometheus  
+Inspiration - https://github.com/techiescamp/kubernetes-prometheus/tree/master  
+Cheatsheet - https://promlabs.com/promql-cheat-sheet/  
 
 ### Grafana
-Environment variables - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/
+Environment variables - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/  
 
 ### Some amazing people on Youtube
 - Kubernetes
